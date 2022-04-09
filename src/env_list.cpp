@@ -79,7 +79,7 @@ void env::list::clear() noexcept {
 	while ( this -> head != nullptr )
 		std::exchange(this -> head, std::move(this -> head -> next));
 
-	this -> size = 0;
+	this -> _size = 0;
 }
 
 env::member& env::list::operator [](const std::string& key) {
