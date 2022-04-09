@@ -35,9 +35,11 @@ namespace env {
 			member& operator =(const std::string& val);
 
 			operator bool();
-			inline operator std::string() { return this -> val; }
-			inline const std::string key() { return this -> _key; }
-			inline const std::string line() { return this -> _key + "=" + this -> val; }
+			inline operator const std::string() const { return this -> val; }
+			inline operator const char*() const { return this -> val.c_str(); }
+			inline const std::string key() const { return this -> _key; }
+			inline const std::string line() const { return this -> _key + "=" + this -> val; }
+			inline const std::string toString() const { return this -> val; }
 
 			friend std::ostream& operator<< (std::ostream& o,const env::member &m) {
 
