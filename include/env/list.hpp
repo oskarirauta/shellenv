@@ -82,6 +82,14 @@ namespace env {
 					this -> push(m);
 			}
 
+			~list() {
+
+				while ( this -> head != nullptr )
+					std::exchange(this -> head, std::move(this -> head -> next));
+
+				this -> _size = 0;
+			}
+
 			struct Iterator {
 
 				public:
