@@ -14,10 +14,7 @@ const env::list env::getenv() {
 		auto delim = e.find_first_of("=");
 		if ( delim == std::string::npos || e.substr(0,delim).empty() || e.substr(delim + 1, e.size() - delim - 1).empty())
 			continue;
-		n.push(env::member(
-				e.substr(0, delim),
-				e.substr(delim + 1, e.size() - delim - 1)
-		));
+		n += env::member(e.substr(0, delim), e.substr(delim + 1, e.size() - delim - 1));
 	}
 
 	return n;
