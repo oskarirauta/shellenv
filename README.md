@@ -39,8 +39,10 @@ env::member can be populated with (std::string key, std::string value) construct
  - env::list env::getenv()
  - int shell::exec(std::string& cmd, std::string& args = "", env::list& shell_env = env::list());
  - pid_t shell::execf(std::string& cmd, std::string& args = "", env::list& shell_env = env::list());
+ - std::string env::trimmed(std::string &s)
 
 env::getenv() returns env::list with current shell environment.
 shell::exec executes with given parameters, either execv or execvpe (or if -DOSX given in CXXFLAGS, execve) depending on shell_env is set to empty
 env::list or not. Result int is given on case of error.
 shell::execf does the same thing, except executes forked and results with pid_t of forked process.
+env::trimmed trims whitespace from both ends of string and is commonly used within shellenv
