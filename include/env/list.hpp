@@ -27,7 +27,7 @@ namespace env {
 			std::unique_ptr<node> head = nullptr;
 			std::size_t _size = 0;
 
-			void push(const env::member& m) const noexcept;
+			void push(const env::member& m) noexcept;
 
 		public:
 
@@ -38,7 +38,14 @@ namespace env {
 			inline bool empty() noexcept { return this -> _size == 0; }
 			inline bool empty() const noexcept { return this -> _size == 0; }
 			bool erase(const std::string& key) noexcept;
-			void clear() noexcept;
+
+			inline void clear() noexcept {
+
+				while ( this -> head != nullptr )
+					std::exchange(this -> head, std::move(this -> head -> next));
+
+				this -> _size = 0;
+			}
 
 			env::member& operator [](const std::string& key);
 
