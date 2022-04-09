@@ -16,10 +16,10 @@ altered after it is set, but value (std::string) can be changed anytime and sett
 
 Use of env::list is pretty simple, it has only few methods:
 
- - push(env::member& m)
  - erase(std::string& key)
  - bool empty()
  - size_t size()
+ - clear()
 
 but methods are not that necessary, as you can use it with just by subscripts..
 
@@ -44,9 +44,3 @@ env::getenv() returns env::list with current shell environment.
 shell::exec executes with given parameters, either execv or execvpe (or if -DOSX given in CXXFLAGS, execve) depending on shell_env is set to empty
 env::list or not. Result int is given on case of error.
 shell::execf does the same thing, except executes forked and results with pid_t of forked process.
-
-### todo
-
-env::list is lacking method clear() which should clear it.
-
-MIT License
