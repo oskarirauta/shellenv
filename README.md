@@ -45,4 +45,8 @@ shell::exec executes with given parameters, either execv or execvpe (or if -DOSX
 env::list or not. Result int is given on case of error.
 shell::execf does the same thing, except executes forked and results with pid_t of forked process.
 
+### todo
+
+env::list is lacking method clear() which should clear it.
+
 MIT License
