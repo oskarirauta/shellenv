@@ -74,6 +74,14 @@ bool env::list::erase(const std::string& key) noexcept {
 	return false;
 }
 
+void env::list::clear() noexcept {
+
+	while ( this -> head != nullptr )
+		std::exchange(this -> head, std::move(this -> head -> next));
+
+	this -> size = 0;
+}
+
 env::member& env::list::operator [](const std::string& key) {
 
 	std::string _key = env::trimmed(key);

@@ -27,6 +27,8 @@ namespace env {
 			std::unique_ptr<node> head = nullptr;
 			std::size_t _size = 0;
 
+			void push(const env::member& m) const noexcept;
+
 		public:
 
 			list() = default;
@@ -35,8 +37,8 @@ namespace env {
 			inline std::size_t size() const noexcept { return this -> _size; }
 			inline bool empty() noexcept { return this -> _size == 0; }
 			inline bool empty() const noexcept { return this -> _size == 0; }
-			void push(const env::member& m) noexcept;
 			bool erase(const std::string& key) noexcept;
+			void clear() noexcept;
 
 			env::member& operator [](const std::string& key);
 
