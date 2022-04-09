@@ -39,6 +39,11 @@ int main() {
 
 	std::cout << "\ncontents of l3:\n" << l3 << std::endl;
 
+	std::cout << "\nTesting if keys exist in list:" << std::endl;
+	std::cout << "[\"key3\"] in list list l3 does " <<  ( l3["key3"] ? ( "exists and has value \"" + (std::string)l3["key3"] + "\"" ) : "not exist" ) << std::endl;
+	std::cout << "[\"key9\"] in list list l3 does " <<  ( l3["key9"] ? ( "exists and has value \"" + (std::string)l3["key9"] + "\"" ) : "not exist" ) << std::endl;
+	std::cout << "\nl3[\"key3\"] = " << l3["key3"] << std::endl;
+
 #ifdef OSX
 	std::string cmd("/usr/bin/env");
 #else
