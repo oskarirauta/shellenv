@@ -1,4 +1,5 @@
 #include <iostream>
+#include <unistd.h>
 #include "env/env.hpp"
 #include "env/list.hpp"
 #include "shell/exec.hpp"
@@ -43,6 +44,10 @@ int main() {
 	std::cout << "[\"key3\"] in list list l3 does " <<  ( l3["key3"] ? ( "exists and has value \"" + (std::string)l3["key3"] + "\"" ) : "not exist" ) << std::endl;
 	std::cout << "[\"key9\"] in list list l3 does " <<  ( l3["key9"] ? ( "exists and has value \"" + (std::string)l3["key9"] + "\"" ) : "not exist" ) << std::endl;
 	std::cout << "\nl3[\"key3\"] = " << l3["key3"] << std::endl;
+
+	pid_t my_pid = ::getpid();
+	std::cout << "\nretrieving env for pid " << my_pid << ":" << std::endl;
+	std::cout << env::getenv(my_pid) << std::endl;
 
 #ifdef OSX
 	std::string cmd("/usr/bin/env");

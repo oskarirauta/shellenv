@@ -2,7 +2,7 @@
 
 shellenv is a C++ helper for exec and shell environment get/manipulation.
 
-It exposes 2 classes and 3 methods/functions (actually 4, if you count a string manipulator which strips whitespaces from both ends of std::string).
+It exposes 2 classes and 4 methods/functions (actually 5, if you count a string manipulator which strips whitespaces from both ends of std::string).
 Classes are in env:: namespace, they are
  - env::member
  - env::list
@@ -37,11 +37,13 @@ env::member can be populated with (std::string key, std::string value) construct
 ### methods
 
  - env::list env::getenv()
+ - env::list env::getenv(pid_t)
  - int shell::exec(std::string& cmd, std::string& args = "", env::list& shell_env = env::list());
  - pid_t shell::execf(std::string& cmd, std::string& args = "", env::list& shell_env = env::list());
  - std::string env::trimmed(std::string &s)
 
 env::getenv() returns env::list with current shell environment.
+env::getenv(pid_t) returns env::list of shell environment for chosen pid, or empty list if operation failed.
 shell::exec executes with given parameters, either execv or execvpe (or if -DOSX given in CXXFLAGS, execve) depending on shell_env is set to empty
 env::list or not. Result int is given on case of error.
 shell::execf does the same thing, except executes forked and results with pid_t of forked process.

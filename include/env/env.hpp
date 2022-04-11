@@ -6,5 +6,6 @@
 namespace env {
 
 	const env::list getenv();
+	const env::list getenv(pid_t pid);
 
 }
